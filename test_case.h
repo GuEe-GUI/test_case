@@ -22,11 +22,11 @@ __attribute__((used,section(".test_case"))) =   \
     TEST_CASE_MAGIC, ##__VA_ARGS__              \
 };
 
-#define TEST_CASE(info, name)               \
-int LINE_VAR(test_case_handler_)(void);     \
-TEST_CASE_DEFINE(LINE_VAR(test_case_),      \
-name, info, LINE_VAR(test_case_handler_))   \
-int LINE_VAR(test_case_handler_)(void)
+#define TEST_CASE(info, name)                   \
+static int LINE_VAR(test_case_handler_)(void);  \
+TEST_CASE_DEFINE(LINE_VAR(test_case_),          \
+name, info, LINE_VAR(test_case_handler_))       \
+static int LINE_VAR(test_case_handler_)(void)
 
 int test_case_init();
 void test_case_start();
